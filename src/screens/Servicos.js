@@ -2,34 +2,30 @@ import React from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 
-const Equipametos = () => {
+const Servicos = () => {
     return (
         <Container>
-            <h3>Lista de Equipamentos</h3>
+            <h3>Lista de Serviços</h3>
             <Table striped bordered hover responsive>
                 <thead>
-                    <th>Nome</th>
                     <th>Descrição</th>
-                    <th>Número de Série</th>
+                    <th>Custo</th>
                     <th></th>
                 </thead>
                 <tbody>
                     <tr>
-                        <td>Antena</td>
-                        <td>Parabólica</td>
-                        <td>18492859_VJHAIA</td>
-                        <td><Button variant="info" as={Link} to="/consultar_equipamento">Consultar</Button></td>
+                        <td>Conserto de Antena</td>
+                        <td>R$ 200,00</td>
+                        <td><Button variant="info" as={Link} to="/consultar_servico">Consultar</Button></td>
                     </tr>
                     <tr>
-                        <td>Antena</td>
-                        <td>Parabólica</td>
-                        <td>18492859_VJHAIA</td>
+                        <td>Conserto de Antena</td>
+                        <td>R$ 200,00</td>
                         <td><Button variant="info">Consultar</Button></td>
                     </tr>
                     <tr>
-                        <td>Antena</td>
-                        <td>Parabólica</td>
-                        <td>18492859_VJHAIA</td>
+                        <td>Conserto de Antena</td>
+                        <td>R$ 200,00</td>
                         <td><Button variant="info">Consultar</Button></td>
                     </tr>
                 </tbody>
@@ -38,4 +34,4 @@ const Equipametos = () => {
     );
 }
 
-export default Equipametos;
+export default Servicos;

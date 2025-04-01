@@ -1,22 +1,18 @@
 import React from 'react';
 import { Col, Container, Row, Form, Button } from 'react-bootstrap';
 
-const ConsultarEquipamento = () => {
+const ConsultarServico = () => {
     return (
         <Container>
-            <h3>Consultar Equipamento</h3>
+            <h3>Consultar Serviço</h3>
             <Row>
-                <Col>
-                    <Form.Label>Nome: </Form.Label>
-                    <Form.Control type="text" name="nome" />
-                </Col>
                 <Col>
                     <Form.Label>Descrição: </Form.Label>
                     <Form.Control type="text" name="descricao" />
                 </Col>
                 <Col>
-                    <Form.Label>Numero de Série: </Form.Label>
-                    <Form.Control type="text" name="numero_serie" />
+                    <Form.Label>Custo: </Form.Label>
+                    <Form.Control type="text" name="custo" />
                 </Col>
             </Row>
             <Row className='mt-2'>
@@ -29,4 +25,4 @@ const ConsultarEquipamento = () => {
     );
 }
 
-export default ConsultarEquipamento;
+export default ConsultarServico;
