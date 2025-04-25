@@ -1,8 +1,24 @@
-import React from 'react';
+import React, {useState, useEffect} from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import api from '../api';
 
 const Equipametos = () => {
+    const [equipamentos, setEquipamentos] = useState([]);
+
+    useEffect(
+        () => {
+            api.get('equipamentos')
+            .then(response => {
+                setEquipamentos(response.data);
+            })
+            .catch(response => {
+                console.log("Erro ao consultar equipamentos")
+            })
+        }, []
+    );
+
+
     return (
         <Container>
             <h3>Lista de Equipamentos</h3>
@@ -14,24 +30,14 @@ const Equipametos = () => {
                     <th></th>
                 </thead>
                 <tbody>
+                    {equipamentos.map((equipamento => 
                     <tr>
-                        <td>Antena</td>
-                        <td>Parabólica</td>
-                        <td>18492859_VJHAIA</td>
-                        <td><Button variant="info" as={Link} to="/consultar_equipamento">Consultar</Button></td>
+                        <td>{equipamento.nome}</td>
+                        <td>{equipamento.descricao}</td>
+                        <td>{equipamento.numero_serie}</td>
+                        <td><Button variant="info" as={Link} to="/consultar_equipamento" state={equipamento} >Consultar</Button></td>
                     </tr>
-                    <tr>
-                        <td>Antena</td>
-                        <td>Parabólica</td>
-                        <td>18492859_VJHAIA</td>
-                        <td><Button variant="info">Consultar</Button></td>
-                    </tr>
-                    <tr>
-                        <td>Antena</td>
-                        <td>Parabólica</td>
-                        <td>18492859_VJHAIA</td>
-                        <td><Button variant="info">Consultar</Button></td>
-                    </tr>
+                    ))}
                 </tbody>
             </Table>
         </Container>

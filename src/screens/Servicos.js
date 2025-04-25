@@ -1,8 +1,24 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { Button, Container, Table } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import api from '../api';
 
 const Servicos = () => {
+    const [servicos, setServicos] = useState([])
+
+    useEffect(
+        () => {
+            api.get('servicos')
+                .then(response => {
+                    setServicos(response.data);
+                })
+                .catch(response => {
+                    console.log("Erro ao consultar servicos")
+                })
+        }, []
+    );
+
+
     return (
         <Container>
             <h3>Lista de Serviços</h3>
@@ -13,21 +29,13 @@ const Servicos = () => {
                     <th></th>
                 </thead>
                 <tbody>
-                    <tr>
-                        <td>Conserto de Antena</td>
-                        <td>R$ 200,00</td>
-                        <td><Button variant="info" as={Link} to="/consultar_servico">Consultar</Button></td>
-                    </tr>
-                    <tr>
-                        <td>Conserto de Antena</td>
-                        <td>R$ 200,00</td>
-                        <td><Button variant="info">Consultar</Button></td>
-                    </tr>
-                    <tr>
-                        <td>Conserto de Antena</td>
-                        <td>R$ 200,00</td>
-                        <td><Button variant="info">Consultar</Button></td>
-                    </tr>
+                    {servicos.map((servico) =>
+                        <tr>
+                            <td>{servico.descricao}</td>
+                            <td>{servico.custo}</td>
+                            <td><Button variant="info" as={Link} to="/consultar_servico" state={servico}>Consultar</Button></td>
+                        </tr>
+                    )}
                 </tbody>
             </Table>
         </Container>
