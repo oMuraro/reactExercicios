@@ -11,7 +11,7 @@ const Manutencoes = () => {
     const [servicos, setServicos] = useState([]);
 
     const formatDate = (date) => {
-        return format(new Date(date), 'yyy-MM-dd')
+        return format(new Date(date), 'yyyy-MM-dd')
     }
 
     useEffect(() => {
@@ -68,16 +68,18 @@ const Manutencoes = () => {
             <h3>Lista de Manutenções</h3>
             <Table striped bordered hover responsive>
                 <thead>
-                    <th>Equipamento</th>
-                    <th>Tecnico</th>
-                    <th>Servico</th>
-                    <th>Data de Início</th>
-                    <th>Data de Término</th>
-                    <th></th>
+                    <tr>
+                        <th>Equipamento</th>
+                        <th>Tecnico</th>
+                        <th>Servico</th>
+                        <th>Data de Início</th>
+                        <th>Data de Término</th>
+                        <th></th>
+                    </tr>
                 </thead>
                 <tbody>
                     {manutencoes.map((manutencao) =>
-                        <tr>
+                        <tr key={manutencao.id}>
                             <td>{getEquipamentoDescricao(manutencao.equipamento_id)}</td>
                             <td>{getTecnicoNome(manutencao.tecnico_id)}</td>
                             <td>{getServicoDescricao(manutencao.servico_id)}</td>
